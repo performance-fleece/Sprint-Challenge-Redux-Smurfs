@@ -6,6 +6,7 @@ import {
   FETCH_SMURFS_SUCCESS,
   FETCH_SMURFS_FAILURE
 } from '../actions';
+import { root } from 'postcss';
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -32,7 +33,7 @@ const initialState = {
   There is no need for 'combineReducers' in this project.
   Components can then read your store as, `state` and not `state.fooReducer`.
 */
-const rootReducer = (state = initialState, actions) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURFS_START: {
       return {
@@ -55,5 +56,9 @@ const rootReducer = (state = initialState, actions) => {
         err: action.payload
       };
     }
+    default:
+      return state;
   }
 };
+
+export default rootReducer;
