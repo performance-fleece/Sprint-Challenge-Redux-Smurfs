@@ -7,9 +7,12 @@ import {
   FETCH_SMURFS_FAILURE,
   ADD_SMURFS_START,
   ADD_SMURFS_SUCCESS,
-  ADD_SMURFS_FAILURE
+  ADD_SMURFS_FAILURE,
+  DEL_SMURF_START,
+  DEL_SMURF_SUCCESS,
+  DEL_SMURF_FAILURE
 } from '../actions';
-import { root } from 'postcss';
+
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -77,6 +80,27 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: action.payload
+      };
+    }
+    case DEL_SMURF_START: {
+      return {
+        ...state,
+        deletingSmurf: true,
+        error: ''
+      };
+    }
+    case DEL_SMURF_SUCCESS: {
+      return {
+        ...state,
+        deletingSmurf: false,
+        smurfs: action.payload
+      };
+    }
+    case DEL_SMURF_FAILURE: {
+      return {
+        ...state,
+        deletingSmurf: false,
         error: action.payload
       };
     }

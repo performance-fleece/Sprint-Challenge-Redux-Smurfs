@@ -9,6 +9,9 @@ export const FETCH_SMURFS_FAILURE = 'FETCH_SMURFS_FAILURE';
 export const ADD_SMURFS_START = 'ADD_SMURFS_START';
 export const ADD_SMURFS_SUCCESS = 'ADD_SMURFS_SUCCESS';
 export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
+export const DEL_SMURF_START = 'DEL_SMURF_START';
+export const DEL_SMURF_SUCCESS = 'DEL_SMURF_SUCCESS';
+export const DEL_SMURF_FAILURE = 'DEL_SMURF_FAILURE';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -20,6 +23,18 @@ export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const delSmurf = id => dispatch => {
+  dispatch({ type: DEL_SMURF_START });
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res => {
+      dispatch({ type: DEL_SMURF_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: DEL_SMURF_FAILURE, payload: err });
+    });
+};
 
 export const addSmurf = newsmurf => dispatch => {
   dispatch({ type: ADD_SMURFS_START });

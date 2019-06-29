@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { getSmurfs, addSmurf } from '../actions';
+import { getSmurfs, addSmurf, delSmurf } from '../actions';
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
 /*
@@ -20,7 +20,7 @@ class App extends Component {
       <div className='App'>
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <SmurfForm addSmurf={this.props.addSmurf} />
-        <SmurfList smurfs={this.props.smurfs} />
+        <SmurfList smurfs={this.props.smurfs} delSmurf={this.props.delSmurf} />
       </div>
     );
   }
@@ -32,5 +32,5 @@ const mapStateToProps = ({ smurfs }) => ({
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, addSmurf }
+  { getSmurfs, addSmurf, delSmurf }
 )(App);
