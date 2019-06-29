@@ -21,7 +21,17 @@ export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
    D - deleteSmurf
 */
 
-export const addSmurfs = newsmurf => dispatch => 
+export const addSmurf = newsmurf => dispatch => {
+  dispatch({ type: ADD_SMURFS_START });
+  axios
+    .post('http://localhost:3333/smurfs', newsmurf)
+    .then(res => {
+      dispatch({ type: ADD_SMURFS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: ADD_SMURFS_FAILURE, payload: err });
+    });
+};
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCH_SMURFS_START });

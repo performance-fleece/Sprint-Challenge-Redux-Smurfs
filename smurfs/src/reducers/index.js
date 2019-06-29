@@ -4,7 +4,10 @@
 import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_FAILURE
+  FETCH_SMURFS_FAILURE,
+  ADD_SMURFS_START,
+  ADD_SMURFS_SUCCESS,
+  ADD_SMURFS_FAILURE
 } from '../actions';
 import { root } from 'postcss';
 /*
@@ -54,6 +57,27 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         fetchingSmurfs: false,
         err: action.payload
+      };
+    }
+    case ADD_SMURFS_START: {
+      return {
+        ...state,
+        error: '',
+        addingSmurf: true
+      };
+    }
+    case ADD_SMURFS_SUCCESS: {
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload
+      };
+    }
+    case ADD_SMURFS_FAILURE: {
+      return {
+        ...state,
+        addingSmurf: false,
+        error: action.payload
       };
     }
     default:
