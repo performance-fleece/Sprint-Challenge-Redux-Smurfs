@@ -1,7 +1,9 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import {
+  FETCH_SMURFS_START
+}
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -13,7 +15,7 @@
    error: null
  }
 */
-
+const initialState
 /*
   You'll only need one smurf reducer for this project.
   Feel free to export it as a default and import as rootReducer. 
