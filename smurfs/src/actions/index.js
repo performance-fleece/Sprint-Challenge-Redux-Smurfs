@@ -21,6 +21,8 @@ export const ADD_SMURFS_FAILURE = 'ADD_SMURFS_FAILURE';
    D - deleteSmurf
 */
 
+export const addSmurfs = newsmurf => dispatch => 
+
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCH_SMURFS_START });
   axios
