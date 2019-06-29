@@ -10,6 +10,14 @@ class SmurfList extends React.Component {
   }
 
   render() {
-    return <div className='smurf-list' />;
+    return (
+      <div className='smurf-list'>
+        {this.props.smurfs.map(smurf => {
+          return <Smurf smurf={smurf} key={smurf.id} />;
+        })}
+      </div>
+    );
   }
 }
+
+export default SmurfList;
